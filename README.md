@@ -19,6 +19,12 @@
   A calm, professional, and privacy-conscious website for a counseling psychology practice.
 </p>
 
+<p align="center">
+  <a href="https://mindsake-website.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/View%20Live%20Website-Mindsake-80B2A9?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+</p>
+
 ---
 
 ## 🌿 About Mindsake

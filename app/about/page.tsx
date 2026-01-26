@@ -1,19 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { FadeIn, Stagger, StaggerItem } from "@/lib/motion";
 
 export default function AboutPage() {
     return (
         <div className="bg-white">
             {/* Hero Section */}
-            <section className="bg-primary/5 py-16 md:py-24">
+            <section className="bg-gradient-to-b from-primary/5 to-white py-16 md:py-24">
                 <Container className="text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-6">
-                        About Mindsake
-                    </h1>
-                    <p className="text-lg md:text-xl text-secondary max-w-2xl mx-auto font-light">
-                        A safe, non-judgmental space dedicated to your mental well-being and personal growth.
-                    </p>
+                    <FadeIn>
+                        <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-6">
+                            About Mindsake
+                        </h1>
+                    </FadeIn>
+                    <FadeIn delay={0.1}>
+                        <p className="text-lg md:text-xl text-secondary max-w-2xl mx-auto font-light">
+                            A safe, non-judgmental space dedicated to your mental well-being and personal growth.
+                        </p>
+                    </FadeIn>
                 </Container>
             </section>
 
@@ -22,8 +27,8 @@ export default function AboutPage() {
                 <Container>
                     <div className="flex flex-col md:flex-row gap-12 items-center">
                         {/* Image Column */}
-                        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
+                        <FadeIn className="w-full md:w-1/2 flex justify-center md:justify-end">
+                            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/10 shadow-lg">
                                 <Image
                                     src="/images/therapist.jpg"
                                     alt="Therapist Profile"
@@ -32,10 +37,10 @@ export default function AboutPage() {
                                     priority
                                 />
                             </div>
-                        </div>
+                        </FadeIn>
 
                         {/* Content Column */}
-                        <div className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left">
+                        <FadeIn delay={0.15} className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left">
                             <div>
                                 <h2 className="text-3xl font-bold font-heading text-secondary mb-2">
                                     Meet the Therapist
@@ -64,37 +69,45 @@ export default function AboutPage() {
                                     <li>Trauma-Informed Approach</li>
                                 </ul>
                             </div>
-                        </div>
+                        </FadeIn>
                     </div>
                 </Container>
             </section>
 
             {/* Philosophy Section */}
-            <section className="bg-gray-50 py-16 md:py-24">
+            <section className="bg-gradient-to-b from-neutral-50 to-white py-16 md:py-24">
                 <Container className="text-center max-w-4xl">
-                    <h2 className="text-3xl font-bold font-heading text-secondary mb-8">
-                        Our Philosophy
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="p-6 bg-white rounded-2xl shadow-sm">
-                            <h3 className="text-xl font-semibold text-primary mb-3">Empathy First</h3>
-                            <p className="text-gray-600 text-sm">
-                                We prioritize deep listening and understanding, ensuring you never feel judged.
-                            </p>
-                        </div>
-                        <div className="p-6 bg-white rounded-2xl shadow-sm">
-                            <h3 className="text-xl font-semibold text-primary mb-3">Evidence-Based</h3>
-                            <p className="text-gray-600 text-sm">
-                                Our methods are grounded in psychological science and proven therapeutic techniques.
-                            </p>
-                        </div>
-                        <div className="p-6 bg-white rounded-2xl shadow-sm">
-                            <h3 className="text-xl font-semibold text-primary mb-3">Holistic Growth</h3>
-                            <p className="text-gray-600 text-sm">
-                                We focus on the whole person, addressing emotional, mental, and relational well-being.
-                            </p>
-                        </div>
-                    </div>
+                    <FadeIn>
+                        <h2 className="text-3xl font-bold font-heading text-secondary mb-8">
+                            Our Philosophy
+                        </h2>
+                    </FadeIn>
+                    <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <StaggerItem>
+                            <div className="p-6 bg-white rounded-xl shadow-sm border border-neutral-100 h-full">
+                                <h3 className="text-xl font-semibold text-primary mb-3">Empathy First</h3>
+                                <p className="text-gray-600 text-sm">
+                                    We prioritize deep listening and understanding, ensuring you never feel judged.
+                                </p>
+                            </div>
+                        </StaggerItem>
+                        <StaggerItem>
+                            <div className="p-6 bg-white rounded-xl shadow-sm border border-neutral-100 h-full">
+                                <h3 className="text-xl font-semibold text-primary mb-3">Evidence-Based</h3>
+                                <p className="text-gray-600 text-sm">
+                                    Our methods are grounded in psychological science and proven therapeutic techniques.
+                                </p>
+                            </div>
+                        </StaggerItem>
+                        <StaggerItem>
+                            <div className="p-6 bg-white rounded-xl shadow-sm border border-neutral-100 h-full">
+                                <h3 className="text-xl font-semibold text-primary mb-3">Holistic Growth</h3>
+                                <p className="text-gray-600 text-sm">
+                                    We focus on the whole person, addressing emotional, mental, and relational well-being.
+                                </p>
+                            </div>
+                        </StaggerItem>
+                    </Stagger>
                 </Container>
             </section>
         </div>

@@ -9,9 +9,9 @@ export function Card({ className, variant = "default", children, ...props }: Car
     return (
         <div
             className={cn(
-                "rounded-2xl bg-white p-6 transition-all duration-300",
-                variant === "default" && "shadow-sm border border-primary/10",
-                variant === "hover" && "shadow-sm border border-primary/10 hover:shadow-lg hover:-translate-y-1 hover:border-primary/30",
+                "rounded-xl bg-white p-6 transition-all duration-300 ease-out",
+                variant === "default" && "shadow-sm border border-neutral-100",
+                variant === "hover" && "shadow-sm border border-neutral-100 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/20",
                 className
             )}
             {...props}

@@ -2,11 +2,7 @@
   <img src="/public/mindsake.png" alt="Mindsake Logo" width="180" />
 </p>
 
-<h1 align="center">Mindsake</h1>
-
-<p align="center">
-  <em>The mind’s matters</em>
-</p>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Playfair+Display&weight=700&size=35&duration=5000&pause=1000&color=80B2A9&center=true&width=1050&lines=Mindsake+%7C+The+Mind's+Matters)](https://git.io/typing-svg)
 
 <p align="center">
   A calm, professional, and privacy-conscious website for a counseling psychology practice.

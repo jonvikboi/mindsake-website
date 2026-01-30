@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { FadeIn, Stagger, StaggerItem } from "@/lib/motion";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
     return (
@@ -26,16 +29,31 @@ export default function AboutPage() {
             <section className="py-16 md:py-24">
                 <Container>
                     <div className="flex flex-col md:flex-row gap-12 items-center">
-                        {/* Image Column */}
+                        {/* Image Column - Enhanced with glass styling */}
                         <FadeIn className="w-full md:w-1/2 flex justify-center md:justify-end">
-                            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/10 shadow-lg">
-                                <Image
-                                    src="/images/therapist.jpg"
-                                    alt="Therapist Profile"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
+                            <div className="relative">
+                                {/* Primary-light halo behind image */}
+                                <div className="absolute inset-0 -m-4 bg-primary-light/15 rounded-full blur-2xl" />
+
+                                {/* Glass container with hover effect */}
+                                <motion.div
+                                    whileHover={{
+                                        scale: 1.03,
+                                        boxShadow: "0 8px 40px rgba(128, 178, 169, 0.2), 0 0 60px rgba(164, 212, 201, 0.15)"
+                                    }}
+                                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
+                                    className="relative glass-card p-3 rounded-full glow-soft"
+                                >
+                                    <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden">
+                                        <Image
+                                            src="/images/therapist.jpg"
+                                            alt="Therapist Profile"
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </div>
+                                </motion.div>
                             </div>
                         </FadeIn>
 

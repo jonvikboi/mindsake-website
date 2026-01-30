@@ -100,3 +100,147 @@ select:focus {
   background-color: var(--primary-light);
   color: var(--foreground);
 }
+
+/* ========================================
+   GLASSMORPHISM DESIGN SYSTEM
+   ======================================== */
+
+/* Glass Design Tokens */
+:root {
+  /* Glass backgrounds - very low opacity for calm aesthetic */
+  --glass-bg-soft: rgba(255, 255, 255, 0.04);
+  --glass-bg-default: rgba(255, 255, 255, 0.06);
+  --glass-bg-card: rgba(255, 255, 255, 0.08);
+  --glass-bg-strong: rgba(255, 255, 255, 0.12);
+
+  /* Glass borders - subtle definition */
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.18);
+
+  /* Glass shadows - soft, diffused */
+  --glass-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --glass-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --glass-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* Standard glass radius */
+  --glass-radius: 24px;
+  --glass-radius-sm: 20px;
+  --glass-radius-lg: 28px;
+
+  /* Primary color glass variants */
+  --glass-primary-bg: rgba(128, 178, 169, 0.08);
+  --glass-primary-border: rgba(128, 178, 169, 0.15);
+  --glass-primary-glow: rgba(164, 212, 201, 0.12);
+}
+
+/* ----------------------------------------
+   Glass Utility Classes
+   ---------------------------------------- */
+
+/* Glass Panel - for container/section backgrounds */
+.glass-panel {
+  background: var(--glass-bg-default);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow-md);
+}
+
+/* Glass Card - for content cards with subtle hover */
+.glass-card {
+  background: var(--glass-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow-sm);
+  transition: all 0.3s ease-out;
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-md);
+}
+
+/* Glass Soft - minimal, subtle effect */
+.glass-soft {
+  background: var(--glass-bg-soft);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--glass-radius-sm);
+  box-shadow: var(--glass-shadow-sm);
+}
+
+/* Glass Strong - prominent glass effect */
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--glass-border-hover);
+  border-radius: var(--glass-radius-lg);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+/* Glass Button Surface - for button containers */
+.glass-button-surface {
+  background: var(--glass-bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow-sm);
+  transition: all 0.2s ease-out;
+}
+
+.glass-button-surface:hover {
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-hover);
+}
+
+/* ----------------------------------------
+   Background Helpers
+   ---------------------------------------- */
+
+/* Soft gradient background - calm, low contrast */
+.bg-gradient-calm {
+  background: linear-gradient(135deg,
+      rgba(164, 212, 201, 0.06) 0%,
+      rgba(128, 178, 169, 0.04) 50%,
+      rgba(99, 117, 147, 0.03) 100%);
+}
+
+/* Primary light tint overlay */
+.bg-tint-primary {
+  background: rgba(164, 212, 201, 0.08);
+}
+
+/* Subtle ambient glow */
+.glow-soft {
+  box-shadow:
+    0 0 40px rgba(164, 212, 201, 0.08),
+    0 0 80px rgba(128, 178, 169, 0.04);
+}
+
+/* Primary accent glow */
+.glow-primary {
+  box-shadow:
+    0 0 20px rgba(128, 178, 169, 0.12),
+    0 0 40px rgba(164, 212, 201, 0.06);
+}
+
+/* ----------------------------------------
+   Glass with Primary Accent
+   ---------------------------------------- */
+
+.glass-primary {
+  background: var(--glass-primary-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-primary-border);
+  border-radius: var(--glass-radius);
+  box-shadow:
+    var(--glass-shadow-sm),
+    0 0 20px var(--glass-primary-glow);
+}

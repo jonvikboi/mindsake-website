@@ -51,7 +51,7 @@ export default function Home() {
         {/* SilkBackground - only rendered if reduced motion is not preferred */}
         {!reducedMotion ? (
           <div
-            className="absolute inset-0 z-0 pointer-events-none"
+            className="absolute inset-0 z-0 pointer-events-none bg-[#f8faf9]"
             aria-hidden="true"
           >
             <Silk

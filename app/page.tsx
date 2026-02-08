@@ -93,17 +93,41 @@ export default function Home() {
 
         {/* Large Centered Hero Logo - animates on scroll */}
         <motion.div
-          className="absolute top-20 left-0 right-0 z-[5] flex items-center justify-center pointer-events-none"
+          className="absolute top-20 left-0 right-0 z-[5] flex items-center justify-center pointer-events-none px-4"
           style={{
             opacity: heroLogoOpacity,
             scale: heroLogoScale,
           }}
           transition={{ duration: 0 }}
         >
-          <div className="flex items-center gap-6 md:gap-8 lg:gap-12">
+          {/* Mobile Layout: Vertical stack with MINDSAKE above logo */}
+          <div className="flex md:hidden flex-col items-center gap-4">
+            {/* Full MINDSAKE text above logo on mobile */}
+            <h2
+              className="text-5xl font-bold text-primary-dark tracking-tight"
+              style={{
+                fontFamily: 'var(--font-playfair)',
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              MINDSAKE
+            </h2>
+
+            {/* Logo */}
+            <div className="relative w-32 h-32 overflow-hidden rounded-full shadow-2xl flex-shrink-0">
+              <img
+                src="/images/logo.jpg"
+                alt="Mindsake Logo"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Desktop Layout: Horizontal with MIND - Logo - SAKE */}
+          <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {/* MIND text on left */}
             <h2
-              className="text-7xl md:text-8xl lg:text-9xl font-bold text-primary-dark tracking-tight"
+              className="text-8xl lg:text-9xl font-bold text-primary-dark tracking-tight"
               style={{
                 fontFamily: 'var(--font-playfair)',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -113,7 +137,7 @@ export default function Home() {
             </h2>
 
             {/* Large Logo Image in center */}
-            <div className="relative w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 overflow-hidden rounded-full shadow-2xl flex-shrink-0">
+            <div className="relative w-52 h-52 lg:w-64 lg:h-64 overflow-hidden rounded-full shadow-2xl flex-shrink-0">
               <img
                 src="/images/logo.jpg"
                 alt="Mindsake Logo"
@@ -123,7 +147,7 @@ export default function Home() {
 
             {/* SAKE text on right */}
             <h2
-              className="text-7xl md:text-8xl lg:text-9xl font-bold text-primary-dark tracking-tight"
+              className="text-8xl lg:text-9xl font-bold text-primary-dark tracking-tight"
               style={{
                 fontFamily: 'var(--font-playfair)',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -282,6 +306,6 @@ export default function Home() {
           </Stagger>
         </Container>
       </section>
-    </div>
+    </div >
   );
 }

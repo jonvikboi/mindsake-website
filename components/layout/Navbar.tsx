@@ -66,7 +66,7 @@ export function Navbar() {
                     <Link
                         href="/"
                         className={cn(
-                            "flex items-center gap-2 transition-all duration-500 ease-out",
+                            "flex items-center gap-2 transition-all duration-500 ease-out flex-1 justify-center md:flex-none md:justify-start",
                             shouldShowNavbar ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                         )}
                     >
@@ -77,7 +77,7 @@ export function Navbar() {
                                 className="h-full w-full object-cover"
                             />
                         </div>
-                        <span className="font-heading text-xl font-bold text-primary-dark tracking-tight hidden sm:block">
+                        <span className="font-heading text-xl font-bold text-primary-dark tracking-tight">
                             Mindsake
                         </span>
                     </Link>
@@ -104,16 +104,36 @@ export function Navbar() {
                         <Button size="sm" href="https://forms.gle/a23Fe4UPjVquuAVZA" target="_blank">Book Session</Button>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
+                    {/* Mobile Menu Toggle - Animated Hamburger */}
                     <button
                         className={cn(
-                            "md:hidden text-secondary hover:text-primary-dark transition-all duration-500 ease-out",
+                            "md:hidden relative w-6 h-6 flex flex-col justify-center items-center transition-all duration-500 ease-out",
                             shouldShowNavbar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                         )}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
-                        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                        {/* Top bar */}
+                        <span
+                            className={cn(
+                                "absolute w-6 h-0.5 bg-secondary transition-all duration-300 ease-out",
+                                isOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+                            )}
+                        />
+                        {/* Middle bar */}
+                        <span
+                            className={cn(
+                                "absolute w-6 h-0.5 bg-secondary transition-all duration-300 ease-out",
+                                isOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
+                            )}
+                        />
+                        {/* Bottom bar */}
+                        <span
+                            className={cn(
+                                "absolute w-6 h-0.5 bg-secondary transition-all duration-300 ease-out",
+                                isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+                            )}
+                        />
                     </button>
                 </Container>
             </nav>

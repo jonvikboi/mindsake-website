@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import { Inter, Roboto, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -17,6 +17,13 @@ const roboto = Roboto({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Mindsake - Counseling Psychology",
   description: "Professional, trustworthy, and empathetic counseling psychology services.",
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${roboto.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${roboto.variable} ${playfair.variable} antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <Navbar />

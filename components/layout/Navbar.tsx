@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -18,23 +18,58 @@ const links = [
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
 
+    // Only apply scroll effect on home page
+    const isHomePage = pathname === '/';
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // On non-home pages, navbar is always visible
+    const shouldShowNavbar = !isHomePage || isScrolled;
+
     return (
-        <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+        <div
+            className={cn(
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+                shouldShowNavbar ? "px-4 pt-4" : "px-0 pt-0"
+            )}
+        >
             <nav
-                className="mx-auto max-w-7xl rounded-2xl"
+                className="mx-auto max-w-7xl rounded-2xl transition-all duration-500 ease-out"
                 style={{
-                    background: 'rgba(255, 255, 255, 0.7)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04)',
+                    background: shouldShowNavbar ? 'rgba(255, 255, 255, 0.7)' : 'transparent',
+                    backdropFilter: shouldShowNavbar ? 'blur(16px)' : 'none',
+                    WebkitBackdropFilter: shouldShowNavbar ? 'blur(16px)' : 'none',
+                    border: shouldShowNavbar ? '1px solid rgba(255, 255, 255, 0.3)' : '1px solid transparent',
+                    boxShadow: shouldShowNavbar
+                        ? '0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04)'
+                        : 'none',
+                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             >
-                <Container className="flex h-16 items-center justify-between">
+                <Container
+                    className={cn(
+                        "flex items-center justify-between transition-all duration-500 ease-out",
+                        shouldShowNavbar ? "h-16" : "h-20"
+                    )}
+                >
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
+                    <Link
+                        href="/"
+                        className={cn(
+                            "flex items-center gap-2 transition-all duration-500 ease-out",
+                            shouldShowNavbar ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+                        )}
+                    >
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                             <img
                                 src="/images/logo.jpg"
@@ -48,7 +83,12 @@ export function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex md:gap-8 md:items-center">
+                    <div
+                        className={cn(
+                            "hidden md:flex md:gap-8 md:items-center transition-all duration-500 ease-out",
+                            shouldShowNavbar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+                        )}
+                    >
                         {links.map((link) => (
                             <Link
                                 key={link.href}
@@ -66,7 +106,10 @@ export function Navbar() {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden text-secondary hover:text-primary-dark transition-colors"
+                        className={cn(
+                            "md:hidden text-secondary hover:text-primary-dark transition-all duration-500 ease-out",
+                            shouldShowNavbar ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+                        )}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
